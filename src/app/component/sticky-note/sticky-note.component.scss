@@ -1,0 +1,98 @@
+.dfp-description-container {
+  max-width: 900px;
+  height: 750px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.dfp-header {
+   
+  height: 730px;
+
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.dfp-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #4a6cf7, #8a54ff);
+  border-radius: 2px;
+}
+
+.dfp-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #4a6cf7 0%, #8a54ff 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+}
+
+.dfp-icon svg {
+  width: 35px;
+  height: 35px;
+  fill: white;
+}
+
+.dfp-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #2d3748;
+}
+
+.dfp-subtitle {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Odzivni dizajn */
+@media (max-width: 768px) {
+  .dfp-description-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .dfp-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .dfp-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .dfp-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.text {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; // lep, čist font
+  font-size: 1rem; // privzeta velikost besedila
+  line-height: 1.6; // izboljša berljivost
+  color: #333; // temno siva barva, prijaznejša za oči kot črna
+  margin-bottom: 1em; // prostor med odstavki
+  letter-spacing: 0.5px; // rahlo razmik med črkami za eleganco
+  text-align: justify; // bolj urejen izgled daljših odstavkov
+  transition: color 0.3s ease; // za mehke spremembe barve ob hover
+}

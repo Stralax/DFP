@@ -1,0 +1,23 @@
+<div class="dfp-description-container">
+  <div class="dfp-header">
+    <div class="dfp-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21 6h-4V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v3H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1zM9 4h6v2H9V4zm11 14H4V8h4v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V8h4v10z"/>
+        <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+      </svg>
+    </div>
+    <h1>Kako je DFP generiran v našem sistemu?</h1>
+    <p class="dfp-subtitle">Device Fingerprint (DFP) – prstni odtis naprave</p>
+  
+    <div class="text">
+    <p><br>Na spletni strani je prikazan sistem za nadzor in upravljanje BeagleBoard naprav. Sistem deluje tako, da ustvarja in uporablja prstne odtise naprav (DFP), kar omogoča natančno identifikacijo, registracijo in preverjanje pristnosti posameznih naprav. Obenem zagotavlja zanesljivost in varnost delovanja, saj spremlja tako statične kot dinamične podatke, kot so CPU identifikatorji, MAC naslovi, stanje sistemskih virov in aktivne naloge. S tem uporabniku omogoča celovit vpogled v delovanje naprav ter učinkovito upravljanje in nadzor.</p>
+  
+    <p>Za ustvarjanje DFP smo uporabili različne podatke, ki so programsko dostopni, kot so CPU identifikatorji, MAC naslovi, verzija in konfiguracija jedra, nameščeni paketi, stanje sistemskih virov (RAM, disk, procesi) ter trenutno izvajane naloge naprave. Ti podatki so prikazani v spodnjem krogu in tvorijo osnovo za generiranje edinstvenega in primerljivega prstnega odtisa.</p>
+  <p>V nadaljevanju si lahko ogledate osnovne gradnike sistema in potek generiranja dinamičnega prstnega odtisa, skupaj s postopki, ki omogočajo prepoznavo in potrjevanje pristnosti naprave. Posebno pozornost smo namenili tudi merjenju odzivnosti, kar dodatno prispeva k zanesljivosti sistema.</p>
+  <!-- <p>Za podrobnejši opis sistema in primerjavo različnih pristopov (statični, dinamični in hibridni DFP) si lahko prenesete PDF dokument: <a href="LINK_DO_PDF" target="_blank">prenesi PDF</a>.</p> -->
+
+  <p>Podatki, prikazani v razdelku „Posamičen prikaz vsake naprave BeagleBoard v sistemu", prikazujejo naprave, ki so že registrirane s pomočjo hibridnega DFP. V spodnjem desnem kotu vsake naprave se nahaja lučka, ki prikazuje njeno trenutno stanje: siva pomeni, da je naprava nedostopna, rumena, da čaka na nalogo, zelena pa, da nalogo trenutno izvaja.</p>
+    </div>
+</div>
+</div>
+  

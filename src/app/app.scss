@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.header {
+  text-align: center;
+  font-family: 'Poppins', sans-serif; /* modern font */
+  font-size: 2.5rem; 
+  font-weight: 600;
+  margin: 20px 0;
+  color: #222;
+  letter-spacing: 1px;  /* malo razmaka med črkami */
+}
+
+.footer {
+  text-align: center;         /* poravnava na sredino */
+  font-size: 0.9rem;          /* malo manjša pisava */
+  color: #555;                /* temno siva */
+  margin-top: 40px;           /* večji razmik od vsebine */
+  padding: 10px 0;            /* notranji razmik */
+  border-top: 1px solid #ccc; /* črta nad footerjem */
+}
+
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #ffe88d;//#fde392; 
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+html, body {
+  background: #FCEEB5;
+  font-family: Abel, Arial, Verdana, sans-serif;
+}
+
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  padding: 20px;
+}
+
+.card {
+  width: 1200px;
+  height: 470px;
+  background-color: #fff;
+  background: linear-gradient(#f8f8f8, #fff);
+  box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  margin: 1.5rem;
+  display: flex; /* Dodano za boljši layout */
+}
+
+.card h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.card .additional {
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(#dE685E, #EE786E);
+  transition: width 0.4s;
+  overflow: hidden;
+  z-index: 2;
+  flex-shrink: 0; /* Prepreči skrčenje */
+}
+
+.card:hover .additional {
+  width: 100%;
+  border-radius: 0 5px 5px 0;
+}
+
+.card .additional .user-card {
+  width: 200px;
+  height: 100%;
+  position: relative;
+  float: left;
+}
+
+.card .additional .user-card::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10%;
+  right: -2px;
+  height: 80%;
+  border-left: 2px solid rgba(0,0,0,0.025);
+}
+
+.card .additional .user-card .level,
+.card .additional .user-card .points {
+  
+  position: absolute;
+  left: 50%;           /* horizontalno na sredino */
+  transform: translateX(-50%); /* centriraj dejansko */
+
+  top: 12%;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: bold;
+  background: rgba(0,0,0,0.15);
+  padding: 0.25rem 1rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.card .additional .user-card .points {
+  top: 83%;
+}
+
+.card .additional .user-card svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+}
+
+.card .additional .more-info {
+  width: 1000px;
+  float: left;
+  position: absolute;
+  left: 200px;
+  height: 100%;
+  padding: 0.8rem;
+  box-sizing: border-box;
+}
+
+.card .additional .more-info h1 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.card .additional .coords {
+  margin: 0.5rem 0;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .additional textarea {
+  width: 90%;
+  margin: 0.5rem 0;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.card .general {
+  width: 350px;
+  height: 100%;
+  position: relative;
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.card .general .coords {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0;
+}
+
+.card .general .coords .label {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+.card .general .coords .value {
+  color: #6c757d;
+  font-size: 0.9rem;
+  word-break: break-all; /* Pomembno za dolge ID-je */
+}
+
+.dfp-value {
+  word-break: break-word; // za prelom vrstica
+  font-family: monospace;
+  padding: 8px;
+  margin-top: 5px;
+  font-size: 10px;
+  
+  overflow-y: auto;
+  background: rgba(0,0,0,0.1);
+}
+
+/* Dodatni slogi za boljšo poravnavo */
+.card .general h1 {
+  text-align: left;
+  margin: 0.5rem 0;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.card .additional .more-info,
+.card .additional textarea {
+  opacity: 0;          /* skrito */
+  transition: opacity 0.4s; /* gladek prehod */
+}
+
+.card:hover .additional .more-info,
+.card:hover .additional textarea {
+  opacity: 1;          /* pokaže se ob hover */
+}
+
+// Dodatni slogi za zelene kartice
+.card.green {
+  .additional {
+    background: linear-gradient(#92bCa6, #A2CCB6) !important;
+  }
+  
+  .additional .more-info h1 {
+    color: #224C36;
+  }
+  
+  .additional .coords {
+    color: #325C46;
+  }
+  
+  .additional textarea {
+    background: rgba(255,255,255,0.3);
+    color: #325C46;
+    
+    &::placeholder {
+      color: rgba(50, 92, 70, 0.7);
+    }
+  }
+}
+// Stili za indikator stanja
+.status-light {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  
+  // Animacija utripanja za opozorila
+  animation: pulse 2s infinite;
+  
+  &.gray {
+    background-color: #9e9e9e;
+    box-shadow: 0 0 5px #9e9e9e;
+  }
+  
+  &.orange {
+    background-color: #ff9800;
+    box-shadow: 0 0 5px #ff9800;
+  }
+  
+  &.green {
+    background-color: #4caf50;
+    box-shadow: 0 0 5px #4caf50;
+    animation: none; // Zelena lučka ne utripa
+  }
+}
+
+// Animacija utripanja
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+// Dodatni slogi za zelene kartice
+.card.green {
+  .additional {
+    background: linear-gradient(#92bCa6, #A2CCB6) !important;
+  }
+  
+  .additional .more-info h1 {
+    color: #224C36;
+  }
+  
+  .additional .coords {
+    color: #325C46;
+  }
+  
+  .additional textarea {
+    background: rgba(255,255,255,0.3);
+    color: #325C46;
+    
+    &::placeholder {
+      color: rgba(50, 92, 70, 0.7);
+    }
+  }
+}
+
+
+

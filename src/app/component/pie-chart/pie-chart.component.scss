@@ -1,0 +1,399 @@
+@use 'sass:math';
+@use 'sass:meta';
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+body {
+  font-size: 15px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #fff;
+  background-color: #000000;
+}
+
+.pie-container {
+  transition: padding .7s ease;
+  padding: 10px 8%;
+  
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+#pieChart {
+  max-width: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 auto;
+  order: 1;
+
+  svg {
+    overflow: visible;
+    transition: width .7s ease;
+    margin-left: 0;
+  }
+
+  path {
+    cursor: pointer;
+  }
+  
+  counter-reset: break-point 80; 
+}
+
+#pieText {
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  order: 2;
+
+  .panel {
+    background-color: #14cc4b;
+    border: groove 4px #222;
+    box-shadow: 8px 10px 20px #000,
+      4px 5px 25px #000;
+    width: 100%;
+    height: 60%;
+    border-radius: 7px;
+    padding: 0 15px;
+    float: left;
+    transition: height .7s ease, padding .7s ease;
+    perspective: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.content-wrapper {
+  overflow: hidden;
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
+// Responsive Text Mixin
+@function strip-unit($number) {
+  @if meta.type-of($number) == 'number' and math.is-unitless($number) == false {
+    @return math.div($number, ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+
+// Responsive text mixin
+@mixin responsiveText ($minSize, $maxSize: 28px, $minWidth: 450px, $maxWidth: 900px) {
+  $mxS: strip-unit($maxSize);
+  $mnS: strip-unit($minSize);
+  $mxW: strip-unit($maxWidth);
+  $mnW: strip-unit($minWidth);
+
+  font-size: calc( #{$minSize} + (#{$mxS} - #{$mnS}) * (100vw - #{$minWidth}) / (#{$mxW} - #{$mnW}));
+
+  @media screen and (max-width: $minWidth ) {
+    font-size: $minSize;
+  }
+
+  @media screen and (min-width: $maxWidth ) {
+    font-size: $maxSize;
+  }
+}
+
+#segmentTitle, #segmentText {
+  text-shadow: 1px 1px 3px #000, 1px 1px 3px #000;
+  text-align: left;
+  width: 100%;
+}
+
+#segmentTitle {
+  transition: padding .7s ease;
+  padding: 15px 0 10px 0;
+  @include responsiveText(19px, 35px, 200px, 1314px);
+  
+  // Popravek za deprecation warning - uporaba & {}
+  & {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #333;
+  }
+}
+
+#segmentText {
+  transition: padding .7s ease, line-height .7s ease;
+  padding: 10px 0 15px 0;
+  @include responsiveText(14px, 21px, 200px, 1314px);
+  
+  & {
+    line-height: 1.6;
+    text-align: justify;
+  }
+}
+
+// Prilagoditve za mobilne naprave
+@media (max-width: 767px) {
+  .pie-container {
+    padding: 10px 5%;
+    
+    .row {
+      flex-direction: column;
+    }
+    
+    #pieChart {
+      order: 2;
+      justify-content: center;
+      margin-bottom: 20px;
+      
+      svg {
+        width: 80% !important;
+      }
+    }
+    
+    #pieText {
+      order: 1;
+      margin-bottom: 20px;
+      
+      .panel {
+        height: auto;
+        min-height: 200px;
+        padding: 0 10px;
+      }
+    }
+  }
+  
+  #segmentTitle, #segmentText {
+    text-align: center;
+  }
+}
+
+// Extra small devices (small phones, less than 360px)
+@media (max-width: 360px) {
+  div.pie-container {
+    padding: 10px 5%;
+
+    #pieChart {
+      counter-reset: break-point 40;
+
+      svg {
+        width: 100%;
+      }
+    }
+
+    #pieText {
+      .panel {
+        height: auto;
+        min-height: 180px;
+        padding: 0 5px;
+
+        #segmentTitle {
+          padding: 10px 0 5px 0;
+          
+          // Popravek za deprecation warning
+          & {
+            font-size: 16px;
+          }
+        }
+        #segmentText {
+          padding: 5px 0 10px 0;
+          
+          // Popravek za deprecation warning
+          & {
+            line-height: 1.4;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dodatne prilagoditve za boljši izgled
+@media (min-width: 768px) {
+  .pie-container {
+    #pieChart {
+      flex: 0 0 40%;
+    }
+    
+    #pieText {
+      flex: 0 0 58%;
+      
+      .panel {
+        padding: 0 20px;
+      }
+    }
+  }
+}
+
+// Ostale medijske poizvedbe iz vašega originalnega SCSS
+// [Ohranite vse vaše originalne medijske poizvedbe in jih popravite na podoben način]
+
+// Small/XS devices (portrait phones, less than 576px)
+@media (min-width: 442.02px) and (max-width: 575.98px) {
+  div.pie-container {
+    padding: 10px 10%;
+
+    #pieChart {
+      counter-reset: break-point 60;
+
+      svg {
+        width: 70%;
+      }
+    }
+
+    #pieText {
+      margin-top: 15px;
+
+      .panel {
+        height: 200px;
+        padding: 0;
+
+        #segmentTitle {
+          padding: 4px;
+        }
+        #segmentText {
+          padding: 0 4px 4px;
+          
+          & {
+            line-height: 21px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Small devices (smart phones/notebook phone, less than 638px wide)
+@media (min-width: 576px) and (max-width: 637.98px) {
+  div.pie-container {
+    padding: 10px 12%;
+
+    #pieChart {
+      counter-reset: break-point 70;
+
+      svg {
+        width: 60%;
+      }
+    }
+
+    #pieText {
+      margin-top: 20px;
+
+      .panel {
+        padding: 0;
+        height: 205px;
+
+        #segmentTitle {
+          padding: 8px;
+        }
+        #segmentText {
+          padding: 0 8px 8px;
+          
+          & {
+            line-height: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Bootstrap col-md Breakpoint at 767px
+@media (min-width: 638px) and (max-width: 767px) {
+  div.pie-container {
+    padding: 10px 15%;
+
+    #pieChart {
+      counter-reset: break-point 80;
+
+      svg {
+        width: 60%;
+      }
+    }
+
+    #pieText {
+      margin-top: 20px;
+
+      .panel {
+        padding: 0 3px;
+        height: 270px;
+
+        #segmentTitle {
+          padding: 15px;
+        }
+        #segmentText {
+          padding: 15px;
+          
+          & {
+            line-height: 27px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Medium-Small Devices (tablets and smaller, 767px to 965px)
+@media (min-width: 767.02px) and (max-width: 965px) { 
+  div.pie-container {
+    padding: 10px 4%;
+
+    #pieChart {
+      counter-reset: break-point 50;
+    }
+
+    #pieText .panel {
+      height: 82%;
+      padding: 0;
+
+      #segmentTitle {
+        padding: 8px;
+      }
+      #segmentText {
+        padding: 0 8px 8px;
+        
+        & {
+          line-height: 23px;
+        }
+      }
+    }
+  }
+}
+
+// Medium-Large Devices (laptop, 965px to 1314px)
+@media (min-width: 965.02px) and (max-width: 1314px) {
+  div.pie-container {
+    padding: 10px 5%;
+
+    #pieChart {
+      counter-reset: break-point 60;
+    }
+
+    #pieText .panel {
+      height: 70%;
+
+      #segmentTitle {
+        padding: 10px;
+      }
+
+      #segmentText {
+        padding: 5px 10px 10px;
+      }
+    }
+  }
+}
+
+// Large Monitors (Smaller than mine)
+@media (min-width: 1314.02px) and (max-width: 1480px) {
+  div.pie-container {
+    padding: 10px 8%;
+
+    #pieChart {
+      counter-reset: break-point 70;
+    }
+    #pieText .panel {
+      #segmentText {
+        padding-top: 10px;
+      }
+    }
+  }
+}
